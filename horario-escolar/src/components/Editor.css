@@ -1,0 +1,311 @@
+/* Layout Geral */
+.editor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.fade-in {
+  animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.editor-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.editor-nome-input {
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px;
+}
+
+
+.btn-primary,
+.btn-danger,
+.btn-ghost,
+.icon-btn {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+  padding: 8px 12px;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-ghost {
+  background: #f3f4f6;
+  padding: 8px 14px;
+}
+
+.btn-ghost:hover {
+  background: #e5e7eb;
+}
+
+.icon-btn {
+  background: #e5e7eb;
+  padding: 8px;
+}
+
+.icon-btn:hover {
+  background: #d1d5db;
+}
+
+
+.editor-abas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.editor-aba {
+  padding: 12px 18px;
+  border: none;
+  background: #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.editor-aba--ativa {
+  background: #2563eb;
+  color: white;
+}
+
+
+.config-card,
+.extras-form-card,
+.dia-editor,
+.extras-list {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+.config-title {
+  margin: 0 0 8px;
+}
+
+.config-desc {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+}
+
+.config-grid-full {
+  grid-column: 1/-1;
+}
+
+
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+
+.config-preview {
+  margin-top: 24px;
+}
+
+.preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-aula,
+.preview-intervalo {
+  display: flex;
+  justify-content: space-between;
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.preview-intervalo {
+  background: #fef3c7;
+}
+
+
+.aba-horario {
+  display: grid;
+  gap: 20px;
+}
+
+.dia-editor-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dia-editor-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.dia-editor-count {
+  color: #6b7280;
+}
+
+.dia-editor-aulas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dia-aula-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.dia-aula-horario {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.dia-aula-nome {
+  cursor: pointer;
+}
+
+.dia-empty {
+  color: #9ca3af;
+}
+
+.dia-editor-add {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.dia-add-btn {
+  width: 50px;
+}
+
+
+.aba-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.extras-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.extras-erro {
+  color: #dc2626;
+  margin-bottom: 12px;
+}
+
+.extra-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.extra-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.extra-item-nome {
+  font-weight: 600;
+}
+
+.extra-item-meta {
+  color: #6b7280;
+  font-size: .9rem;
+}
+
+
+@media (max-width: 768px) {
+
+  .editor-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .editor-header-left {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dia-aula-item {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-abas {
+    flex-direction: column;
+  }
+}
