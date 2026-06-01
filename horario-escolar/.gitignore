@@ -1,0 +1,29 @@
+
+# Dependências (Obrigatório)
+node_modules/
+.pnp
+.pnp.js
+
+# Produção / Builds (Evita enviar código compilado)
+dist/
+build/
+
+# Ficheiros de Sistema (Evita lixo do Windows/Mac)
+.DS_Store
+Thumbs.db
+
+# Logs de Erros
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variáveis de Ambiente (Segurança: protege as suas senhas/chaves API)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Configurações de IDEs (Opcional, mas recomendado)
+.vscode/
+.idea/
