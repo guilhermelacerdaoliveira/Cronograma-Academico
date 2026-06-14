@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Home from './components/Home'
 import ScheduleView from './components/ScheduleView'
 import Editor from './components/Editor'
+import Sidebar from './components/Sidebar'
+import { importarPerfil } from './utils/fileUtils'
 import {
   carregarPerfis, salvarPerfis,
   carregarIdAtivo, salvarIdAtivo,
@@ -10,12 +12,13 @@ import {
 export default function App() {
   const [perfis, setPerfis] = useState(() => carregarPerfis())
   const [idAtivo, setIdAtivo] = useState(() => carregarIdAtivo())
-  const [tela, setTela] = useState(() => {
-    // Se tem perfis salvos, vai direto pra home com lista; senão home vazia
-    return 'home'
-  })
+  const [tela, setTela] = useState('home')
+  const inputRef = useRef()
 
   const perfilAtivo = perfis.find(p => p.id === idAtivo) || null
+
+  // ID usado para marcar item ativo na sidebar
+  const telaAtiva = tela === 'home' ? 'home' : idAtivo
 
   function abrirPerfil(id) {
     salvarIdAtivo(id)
@@ -37,14 +40,27 @@ export default function App() {
     if (idAtivo === id) {
       setIdAtivo(null)
       salvarIdAtivo(null)
+      setTela('home')
     }
   }
 
-  function importarPerfil(perfil) {
-    const novos = [...perfis, perfil]
-    salvarPerfis(novos)
-    setPerfis(novos)
-    abrirPerfil(perfil.id)
+  async function handleImportar() {
+    inputRef.current.click()
+  }
+
+  async function handleImportarArquivo(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    try {
+      const perfil = await importarPerfil(file)
+      const novos = [...perfis, perfil]
+      salvarPerfis(novos)
+      setPerfis(novos)
+      abrirPerfil(perfil.id)
+    } catch (err) {
+      alert(err.message)
+    }
+    e.target.value = ''
   }
 
   function salvarEdicao(perfilEditado) {
@@ -61,30 +77,56 @@ export default function App() {
   }
 
   return (
-    <>
-      {tela === 'home' && (
-        <Home
-          perfis={perfis}
-          onAbrirPerfil={abrirPerfil}
-          onCriarPerfil={criarPerfil}
-          onDeletarPerfil={deletarPerfil}
-          onImportarPerfil={importarPerfil}
-        />
-      )}
-      {tela === 'view' && perfilAtivo && (
-        <ScheduleView
-          perfil={perfilAtivo}
-          onEditar={() => setTela('editor')}
-          onVoltar={irHome}
-        />
-      )}
-      {tela === 'editor' && perfilAtivo && (
-        <Editor
-          perfil={perfilAtivo}
-          onSalvar={salvarEdicao}
-          onCancelar={() => setTela('view')}
-        />
-      )}
-    </>
+    <div style={{ display: 'flex' }}>
+      {/* Sidebar global — aparece em todas as telas */}
+      <Sidebar
+        perfis={perfis}
+        telaAtual={telaAtiva}
+        onIrHome={irHome}
+        onAbrirPerfil={abrirPerfil}
+        onDeletarPerfil={deletarPerfil}
+        onImportar={handleImportar}
+      />
+
+      {/* Conteúdo principal */}
+      <div style={{ marginLeft: 'var(--sidebar-width)', flex: 1, minHeight: '100vh' }}>
+        {tela === 'home' && (
+          <Home
+            perfis={perfis}
+            onAbrirPerfil={abrirPerfil}
+            onCriarPerfil={criarPerfil}
+            onDeletarPerfil={deletarPerfil}
+            onImportarPerfil={(perfil) => {
+              const novos = [...perfis, perfil]
+              salvarPerfis(novos)
+              setPerfis(novos)
+              abrirPerfil(perfil.id)
+            }}
+          />
+        )}
+        {tela === 'view' && perfilAtivo && (
+          <ScheduleView
+            perfil={perfilAtivo}
+            onEditar={() => setTela('editor')}
+            onVoltar={irHome}
+          />
+        )}
+        {tela === 'editor' && perfilAtivo && (
+          <Editor
+            perfil={perfilAtivo}
+            onSalvar={salvarEdicao}
+            onCancelar={() => setTela('view')}
+          />
+        )}
+      </div>
+
+      <input
+        ref={inputRef}
+        type="file"
+        accept=".json"
+        style={{ display: 'none' }}
+        onChange={handleImportarArquivo}
+      />
+    </div>
   )
 }
