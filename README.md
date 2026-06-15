@@ -22,10 +22,10 @@ O sistema permite criar diferentes horários, adicionar matérias para cada dia 
 
 ## Como executar
 
-
+cd projetopw
+cd horario-escolar
 npm install
 npm run dev
-
 
 Depois abra:
 
