@@ -1,7 +1,7 @@
-/* ══════════════════════════════════════════════════════════════════
+/* 
    Editor — Tela de edição de horários
-   Segue o mesmo padrão sidebar + conteúdo branco
-   ══════════════════════════════════════════════════════════════════ */
+   Segue o mesmo padrão sidebar
+    */
 
 .editor {
   display: flex;
@@ -10,10 +10,10 @@
   background: var(--surface);
 }
 
-/* ── Cabeçalho do editor ─────────────────────────────────────────────────── */
+/* Cabeçalho do editor */
 .editor-header {
   display: flex;
-  align-items: center;
+  align-items: center;  
   justify-content: space-between;
   padding: 18px 40px;
   border-bottom: 1.5px solid var(--border);
@@ -47,7 +47,7 @@
   border-bottom-color: var(--accent);
 }
 
-/* ── Abas ─────────────────────────────────────────────────────────────────── */
+/* Abas  */
 .editor-abas {
   display: flex;
   gap: 2px;
@@ -79,14 +79,14 @@
   border-bottom-color: var(--accent);
 }
 
-/* ── Corpo do editor ─────────────────────────────────────────────────────── */
+/*  Corpo do editor  */
 .editor-body {
   flex: 1;
   padding: 32px 40px;
   overflow-y: auto;
 }
 
-/* ── Aba de configurações ─────────────────────────────────────────────────── */
+/*  Aba de configurações */
 .aba-config {
   max-width: 640px;
 }
@@ -175,7 +175,7 @@
   font-style: italic;
 }
 
-/* ── Aba de horário (dias) ────────────────────────────────────────────────── */
+/* Aba de horário (dias)  */
 .aba-horario {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -306,7 +306,7 @@
   flex-shrink: 0;
 }
 
-/* ── Aba Extras ───────────────────────────────────────────────────────────── */
+/* Aba Extras */
 .aba-extras {
   max-width: 640px;
   display: flex;
@@ -395,7 +395,7 @@
   color: var(--text-muted);
 }
 
-/* ── Responsividade ───────────────────────────────────────────────────────── */
+/* Responsividade  */
 @media (max-width: 768px) {
   .editor {
     margin-left: 0;

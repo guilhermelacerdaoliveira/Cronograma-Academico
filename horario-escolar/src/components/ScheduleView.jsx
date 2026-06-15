@@ -8,7 +8,6 @@ export default function ScheduleView({ perfil, onEditar, onVoltar }) {
   const hojeISO = hoje.toISOString().slice(0, 10)
   const hojeChave = ['domingo','segunda','terca','quarta','quinta','sexta','sabado'][hoje.getDay()]
 
-  // Para cada dia, mescla aulas normais + extras (que caem nesse dia ou se repetem)
   const diasComAulas = useMemo(() => {
     return DIAS.map((dia) => {
       const aulasNormais = (perfil.horario[dia] || []).map((nome, i) => ({
@@ -19,24 +18,20 @@ export default function ScheduleView({ perfil, onEditar, onVoltar }) {
         key: `normal-${i}`,
       }))
 
-      // Extras que batem neste dia da semana (por repetição) ou numa data exata
-      const extrasNoDia = (perfil.aulasExtras || []).filter((e) => {
-        if (e.repetirSemanal) return diaDaSemana(e.data) === dia
-        return diaDaSemana(e.data) === dia
-      }).map((e) => ({
-        tipo: 'extra',
-        nome: e.nome,
-        inicio: e.horario,
-        fim: somarMinutos(e.horario, perfil.config.duracaoAula),
-        data: e.data,
-        repetirSemanal: e.repetirSemanal,
-        key: `extra-${e.id}`,
-      }))
+      const extrasNoDia = (perfil.aulasExtras || [])
+        .filter(e => diaDaSemana(e.data) === dia)
+        .map((e) => ({
+          tipo: 'extra',
+          nome: e.nome,
+          inicio: e.horario,
+          fim: somarMinutos(e.horario, perfil.config.duracaoAula),
+          data: e.data,
+          repetirSemanal: e.repetirSemanal,
+          key: `extra-${e.id}`,
+        }))
 
-      // Junta e ordena por horário
       const todas = [...aulasNormais, ...extrasNoDia].sort((a, b) => a.inicio.localeCompare(b.inicio))
 
-      // Calcula onde colocar marcadores de intervalo
       const comIntervalo = []
       let contadorNormais = 0
       for (const aula of todas) {
@@ -44,7 +39,6 @@ export default function ScheduleView({ perfil, onEditar, onVoltar }) {
         if (aula.tipo === 'normal') {
           contadorNormais++
           if (contadorNormais % perfil.config.aulaIntervaloApos === 0) {
-            // Próxima aula normal após o intervalo
             const proxIndex = todas.indexOf(aula) + 1
             const proxNormal = todas.slice(proxIndex).find(a => a.tipo === 'normal')
             if (proxNormal) {

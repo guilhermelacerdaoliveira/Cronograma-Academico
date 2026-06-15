@@ -3,7 +3,7 @@ import { DIAS, DIAS_LABELS, calcularHorarioAula, calcularFimAula } from '../util
 import './Editor.css'
 
 const ABAS = ['config', 'horario', 'extras']
-const ABA_LABELS = { config: '⚙️ Configurações', horario: '📋 Aulas', extras: '📌 Aulas Extras' }
+const ABA_LABELS = { config: ' Configurações', horario: ' Aulas', extras: ' Aulas Extras' }
 
 export default function Editor({ perfil, onSalvar, onCancelar }) {
   const [aba, setAba] = useState('config')
@@ -60,7 +60,7 @@ export default function Editor({ perfil, onSalvar, onCancelar }) {
   )
 }
 
-// ── Aba Configurações ──────────────────────────────────────────────────────────
+// Aba Configurações 
 function AbaConfig({ config, onChange }) {
   return (
     <div className="aba-config">
@@ -126,7 +126,7 @@ function Preview({ config }) {
   )
 }
 
-// ── Aba Horário ────────────────────────────────────────────────────────────────
+//  Aba Horário 
 function AbaHorario({ horario, config, onChange }) {
   return (
     <div className="aba-horario">
@@ -201,7 +201,7 @@ function AulaInput({ value, onChange }) {
   return <span className="dia-aula-nome" onDoubleClick={() => setEditing(true)}>{value}</span>
 }
 
-// ── Aba Extras ─────────────────────────────────────────────────────────────────
+// Aba Extras
 function AbaExtras({ extras, onChange }) {
   const [form, setForm] = useState({ nome: '', data: '', horario: '07:30', repetirSemanal: false })
   const [erro, setErro] = useState('')
@@ -259,7 +259,7 @@ function AbaExtras({ extras, onChange }) {
               <div className="extra-item-info">
                 <span className="extra-item-nome">{e.nome}</span>
                 <span className="extra-item-meta">
-                  📅 {e.data.split('-').reverse().join('/')} · ⏰ {e.horario}
+                   {e.data.split('-').reverse().join('/')} ·  {e.horario}
                   {e.repetirSemanal && ' · 🔁 Semanal'}
                 </span>
               </div>

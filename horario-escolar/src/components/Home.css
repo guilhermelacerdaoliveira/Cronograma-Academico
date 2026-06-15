@@ -1,16 +1,16 @@
-/* ══════════════════════════════════════════════════════════════════
+/* 
    Home — Layout com sidebar escura + área de conteúdo branca
    Espelha a imagem 1: sidebar fixa à esquerda, dashboard à direita
-   ══════════════════════════════════════════════════════════════════ */
+    */
 
-/* ── Layout raiz ─────────────────────────────────────────────────────────── */
+/*  Layout raiz  */
 .home {
   display: flex;
   min-height: 100vh;
   background: var(--bg);
 }
 
-/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+/* Sidebar  */
 .home-sidebar {
   width: var(--sidebar-width);
   background: var(--sidebar-bg);
@@ -134,7 +134,7 @@
   margin-top: 12px;
 }
 
-/* ── Conteúdo principal ──────────────────────────────────────────────────── */
+/* Conteúdo principal  */
 .home-content {
   margin-left: var(--sidebar-width);
   flex: 1;
@@ -142,7 +142,7 @@
   background: var(--surface);
 }
 
-/* ── Área central (quando não há perfil ativo = tela de boas-vindas) ──────── */
+/* Área central */
 .home-wrap {
   max-width: 680px;
   margin: 0 auto;
@@ -178,7 +178,7 @@
   color: var(--text-secondary);
 }
 
-/* ── Section ─────────────────────────────────────────────────────────────── */
+/* Sections  */
 .home-section {
   width: 100%;
 }
@@ -193,7 +193,7 @@
   text-align: left;
 }
 
-/* ── Lista de perfis ─────────────────────────────────────────────────────── */
+/* Lista de perfis  */
 .perfis-list {
   display: flex;
   flex-direction: column;
@@ -243,7 +243,7 @@
   margin-right: 8px;
 }
 
-/* ── Botões de ação ──────────────────────────────────────────────────────── */
+/* Botões de ação  */
 .home-btn-novo {
   width: 100%;
   padding: 12px 18px;
@@ -281,14 +281,14 @@
   border-radius: var(--radius-lg);
 }
 
-/* ── Footer ──────────────────────────────────────────────────────────────── */
+/* Footer  */
 .home-footer {
   font-size: 12px;
   color: var(--text-muted);
   text-align: center;
 }
 
-/* ── Dashboard (quando um perfil está aberto na home) ────────────────────── */
+/* Dashboard  */
 .home-dashboard {
   padding: 40px 48px;
 }
@@ -310,7 +310,7 @@
   margin-top: 3px;
 }
 
-/* ── Grid de cards ──────────────────────────────────────────────────────── */
+/* Grid de cards  */
 .dashboard-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -357,7 +357,7 @@
   color: var(--text-secondary);
 }
 
-/* ── Visão da semana (mini grid) ─────────────────────────────────────────── */
+/* Visão da semana (mini grid) */
 .week-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -431,7 +431,7 @@
   background: var(--accent-hover);
 }
 
-/* ── Próximos eventos ─────────────────────────────────────────────────────── */
+/* Próximos eventos */
 .events-list {
   display: flex;
   flex-direction: column;

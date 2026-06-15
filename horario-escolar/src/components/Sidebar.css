@@ -1,6 +1,6 @@
-/* ══════════════════════════════════════════════════════════════════
-   Sidebar — componente global presente em todas as telas
-   ══════════════════════════════════════════════════════════════════ */
+/*
+Sidebar — componente global presente em todas as telas
+*/
 
 .sidebar {
   width: var(--sidebar-width);

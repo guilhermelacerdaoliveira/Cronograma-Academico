@@ -16,7 +16,7 @@ export default function Sidebar({ perfis, telaAtual, onIrHome, onAbrirPerfil, on
           className={`sidebar-nav-item ${telaAtual === 'home' ? 'active' : ''}`}
           onClick={onIrHome}
         >
-          <span className="nav-icon">🏠</span>
+          
           <span className="nav-label">Início</span>
         </button>
 
@@ -29,7 +29,6 @@ export default function Sidebar({ perfis, telaAtual, onIrHome, onAbrirPerfil, on
                 className={`sidebar-nav-item ${telaAtual === p.id ? 'active' : ''}`}
                 onClick={() => onAbrirPerfil(p.id)}
               >
-                <span className="nav-icon">📋</span>
                 <span className="nav-label">{p.nome}</span>
                 <button
                   className="nav-del"
@@ -46,11 +45,9 @@ export default function Sidebar({ perfis, telaAtual, onIrHome, onAbrirPerfil, on
 
         <span className="sidebar-nav-label" style={{ marginTop: 16 }}>Ações</span>
         <button className="sidebar-nav-item" onClick={onIrHome}>
-          <span className="nav-icon">➕</span>
           <span className="nav-label">Novo horário</span>
         </button>
         <button className="sidebar-nav-item" onClick={onImportar}>
-          <span className="nav-icon">📂</span>
           <span className="nav-label">Importar .json</span>
         </button>
       </nav>

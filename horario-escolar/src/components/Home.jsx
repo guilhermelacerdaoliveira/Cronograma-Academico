@@ -23,14 +23,13 @@ export default function Home({ perfis, onAbrirPerfil, onCriarPerfil, onDeletarPe
   return (
     <div className="home-dashboard fade-in">
       <div className="dashboard-header">
-        <h1 className="dashboard-greeting">Olá, estudante! 👋</h1>
+        <h1 className="dashboard-greeting">Olá, estudante!</h1>
         <p className="dashboard-date">{dataFormatada}</p>
       </div>
 
       <div className="dashboard-row">
         <div className="dash-card">
           <div className="dash-card-label">
-            <span className="label-icon">⏰</span>
             Próxima aula
           </div>
           <div className="dash-card-title">
