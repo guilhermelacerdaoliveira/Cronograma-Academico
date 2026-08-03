@@ -1,4 +1,4 @@
-# Horário Escolar
+# Cronograma Escolar
 
 Projeto feito em React para organizar horários de aula.
 
