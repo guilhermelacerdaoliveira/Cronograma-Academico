@@ -1,6 +1,6 @@
-# Cronograma Academico
+# Cronograma Academico V2
 
-Projeto feito em React para organizar horários de aula.
+Projeto feito em React Native para organizar horários de aula.
 
 O sistema permite criar diferentes horários, adicionar matérias para cada dia da semana e visualizar a grade completa com os horários calculados automaticamente.
 
@@ -16,34 +16,53 @@ O sistema permite criar diferentes horários, adicionar matérias para cada dia 
 
 ## Tecnologias usadas
 
-* React
-* Vite
-* localStorage
+* React Native
+* AsyncStorage
 
 ## Como executar
 
-cd projetopw
-cd horario-escolar
+cd Cronograma-Academico
+cd horarioV2
+cd cronogramacademico
 npm install
-npm run dev
+npx expo install @react-native-async-storage/async-storage
+npx expo install expo-file-system
+npx expo install expo-document-picker
+npx expo install expo-sharing
 
-Depois abra:
-
-
-http://localhost:5173
-
+npx expo start --tunnel
 
 ## Organização
 
-
+App.js
 src/
-├── App.jsx
-├── main.jsx
-├── index.css
+│ Theme.js
+├── screens/
+│   ├── Home.js
+│   ├── Editor.js
+│   └── ScheduleView.js
+│
 ├── components/
+│   ├── home/
+│   │   ├── CreateProfileCard.js
+│   │   └── WeekOverview.js
+│   │
+│   ├── editor/
+│   │   ├── Preview.js
+│   │   ├── DiaEditor.js
+│   │   ├── AulaInput.js
+│   │   └── AbaExtras.js
+│   │
+│   └── schedule/
+│       ├── AulaSlot.js
+│       ├── AulaExtraSlot.js
+│       └── IntervaloSlot.js
+│
 └── utils/
+    ├── Storage.js
+    └── FileUtils.js
 
 
 ## Observações
 
-Todos os dados ficam armazenados localmente no navegador, então não é necessário criar conta ou fazer login.
+O projeto ainda está em uma versão desatualizada e com bugs, algumas funcionalidades podem não estar funcionando corretamente
