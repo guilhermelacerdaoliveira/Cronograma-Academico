@@ -66,3 +66,11 @@ src/
 ## Observações
 
 O projeto ainda está em uma versão desatualizada e com bugs, algumas funcionalidades podem não estar funcionando corretamente
+
+## funcionalidades futuras
+
+* criação de uma função professor
+* adicionar horários de sábado e domingo
+* adicionar possibilidade de notificação
+* versão online que funciona offline
+* funções extras (carga horária, férias, mudança especifica)
